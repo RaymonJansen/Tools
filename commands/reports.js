@@ -15,7 +15,7 @@ module.exports = {
             }
 
             if (args.length > 1) {
-                message.reply("This command only need zero or one argument!")
+                message.reply("This command only needs a maximum of one argument!")
                 return;
             }
 

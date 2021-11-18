@@ -9,7 +9,6 @@ const cooldowns = new Discord.Collection();
 
 const messageReport = require("./functions/messageReport.js");
 const messageDecision = require("./functions/messageDecision.js");
-const errorReply = require("./functions/errorReply.js");
 
 const M_ID = "M_ID", C_ID = "C_ID";
 

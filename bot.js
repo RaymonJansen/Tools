@@ -1,7 +1,7 @@
 const fs = require('fs');
 const Discord = require('discord.js');
 const { token } = require('./auth.json');
-const { Client, Intents } = require('discord.js');
+const { Intents } = require('discord.js');
 const { prefix } = require('./config.json');
 const database = require('./database.json');
 const mysql = require('mysql');
@@ -127,7 +127,6 @@ client.on('messageReactionAdd', async (messageData, user) => {
         console.log("NOT BOT")
         if (messageData.emoji.name === "rep") {
             messageReport.messageReport(messageData, user, client, M_ID, C_ID)
-            return;
         } else if (messageData.emoji.name === "✅" || messageData.emoji.name === "⚠" || messageData.emoji.name === "❌") {
             if (messageData.message.channelId == client.channels.cache.find(channel => channel.name === "reports")) {
                 messageDecision.messageDecision(messageData, user, client, M_ID, C_ID);
@@ -139,4 +138,4 @@ client.on('messageReactionAdd', async (messageData, user) => {
 
 });
 
-client.login(token).then(r => console.log('DONE'));
+client.login(token).then(console.log('DONE'));

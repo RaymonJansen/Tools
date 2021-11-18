@@ -1,4 +1,3 @@
-const Discord = require('discord.js');
 let errorReply = require("./../functions/errorReply.js");
 
 module.exports = {

@@ -1,4 +1,3 @@
-const Discord = require('discord.js');
 let shopListReply = require("./../functions/shopListReply.js");
 let errorReply = require("./../functions/errorReply.js");
 
@@ -18,6 +17,7 @@ module.exports = {
         }
 
         if (args.length === 0) {
+            console.log("test")
             con.query(`SELECT DISTINCT category FROM store WHERE serverID = '${serverID}'`, (err, rows) => {
                 if (err) throw err;
                 shopListReply.shopListReply(args, rows, message, rowsHasAValue, client);
@@ -25,14 +25,12 @@ module.exports = {
         }
 
         if (args.length === 1) {
+            console.log("test 2")
             con.query(`SELECT * FROM store WHERE category = '${args[0]}' AND serverID = '${serverID}'`, (err, rows) => {
                 if (err) throw err;
 
-                if (rows.length !== 0) {
-                    rowsHasAValue = true;
-                } else {
-                    rowsHasAValue = false;
-                }
+
+                rowsHasAValue = (rows.length !== 0);
 
                 shopListReply.shopListReply(args, rows, message, rowsHasAValue, client);
             });

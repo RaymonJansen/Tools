@@ -17,7 +17,6 @@ module.exports = {
         }
 
         if (args.length === 0) {
-            console.log("test")
             con.query(`SELECT DISTINCT category FROM store WHERE serverID = '${serverID}'`, (err, rows) => {
                 if (err) throw err;
                 shopListReply.shopListReply(args, rows, message, rowsHasAValue, client);
@@ -25,7 +24,6 @@ module.exports = {
         }
 
         if (args.length === 1) {
-            console.log("test 2")
             con.query(`SELECT * FROM store WHERE category = '${args[0]}' AND serverID = '${serverID}'`, (err, rows) => {
                 if (err) throw err;
 

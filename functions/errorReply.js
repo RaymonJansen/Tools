@@ -1,4 +1,4 @@
-exports.errorReply = function(name, usage, message, wrongChannel){
+exports.errorReply = function(name, usage, message, channelName, wrongChannel){
     let reply;
 
     if (wrongChannel === true) {

@@ -18,7 +18,7 @@ module.exports = {
         }
 
         if (args.length !== 1) {
-            errorReply.errorReply(module.exports.name, module.exports.usage, message );
+            errorReply.errorReply(module.exports.name, module.exports.usage, message, module.exports.channelName, false);
             return;
         }
 

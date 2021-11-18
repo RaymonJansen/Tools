@@ -33,8 +33,6 @@ exports.messageDecision = function(messageData, user, client, M_ID, C_ID) {
     }
 
     function getMessageContent(messageData) {
-        console.log("MID")
-        console.log("MID")
         messageData.message.embeds[0].fields.forEach(field => {
             if (field.name === C_ID) {
                 CID = field.value

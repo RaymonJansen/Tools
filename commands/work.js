@@ -22,15 +22,12 @@ module.exports = {
         }
 
         con.query(`SELECT * FROM userdata WHERE userID = '${userID}' AND serverID = '${serverID}'`, (err, rows) => {
-            console.log(rows);
+
         })
 
         con.query(`SELECT * FROM userdata INNER JOIN jobs WHERE userdata.userID = '${userID}' AND jobs.jobID = userdata.userLevel AND userdata.serverID = '${serverID}'`, (err, rows) => {
             if (err) throw err;
             let pay;
-
-            console.log(rows);
-            return;
 
             if (rows.length < 1) {
                 con.query(`SELECT * FROM jobs WHERE jobID = 1`, (err, rows) => {

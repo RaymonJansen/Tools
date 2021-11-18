@@ -26,15 +26,14 @@ for (const file of commandFiles) {
 }
 
 client.once('ready', () => {
-    console.log('Ready!');
     client.user.setStatus('available')
     client.user.setPresence({
-
         game: {
             name: 'https://www.twitch.tv/monstercat',
             type: "LISTENING",
         }
     });
+    console.log('Bot is Ready!');
 });
 
 let con = mysql.createConnection({
@@ -67,20 +66,6 @@ client.on('messageCreate', message => {
 
     if (!command) return;
 
-    // if (!command.guildOnly) {
-    //     return message.reply(':x: I can\'t execute that command inside DMs!');
-    // }
-
-    // if (command.args && !args.length) {
-    //     let reply = `You didn't provide any arguments, ${message.author}!`;
-    //
-    //     if (command.usage) {
-    //         reply += `\nThe proper usage would be: \`${prefix}${command.name} ${command.usage}\``;
-    //     }
-    //
-    //     return message.channel.send(reply);
-    // }
-
     if (!cooldowns.has(command.name)) {
         cooldowns.set(command.name, new Discord.Collection());
     }
@@ -110,7 +95,7 @@ client.on('messageCreate', message => {
 });
 
 client.on('interactionCreate', interaction => {
-    console.log('TEST' + interaction)
+
 });
 
 // make sure it's an async function
@@ -120,11 +105,7 @@ client.on('messageReactionAdd', async (messageData, user) => {
         await messageData.message.fetch() :
         messageData.message;
 
-    console.log(messageData)
-    console.log(user)
-
     if (user != '851864697275154452') {
-        console.log("NOT BOT")
         if (messageData.emoji.name === "rep") {
             messageReport.messageReport(messageData, user, client, M_ID, C_ID)
         } else if (messageData.emoji.name === "✅" || messageData.emoji.name === "⚠" || messageData.emoji.name === "❌") {
@@ -133,9 +114,9 @@ client.on('messageReactionAdd', async (messageData, user) => {
             }
         }
     } else {
-        console.log("BOT")
+
     }
 
 });
 
-client.login(token).then(console.log('DONE'));
+client.login(token).then(console.log('Client login is DONE'));

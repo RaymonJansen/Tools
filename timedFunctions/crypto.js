@@ -12,7 +12,7 @@ exports.crypto = function(con, client){
         sendCryptoMessage(rows, false);
     });
 
-    let startCryptoInterval = setInterval(checkCrypto, 300000);
+    setInterval(checkCrypto, 300000);
     let channel = client.channels.find('name', 'unknown-crypto');
 
     channel.bulkDelete(99, true).catch(err => {
@@ -27,7 +27,7 @@ exports.crypto = function(con, client){
             let newValue, upOrDownSymbol;
 
             let percentage = Math.round(Math.random() * 9) + 1;
-            let upOrDown = Math.round(Math.random() * 1);
+            let upOrDown = Math.round(Math.random());
             let getValue = worth / 100 * percentage;
 
             if (upOrDown === 0) {
@@ -55,11 +55,9 @@ exports.crypto = function(con, client){
 
         let today = new Date();
         let date = today.getDate() + '-' + (today.getMonth()+1) + '-'+today.getFullYear();
-        let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();;
+        let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
         // let timeToday = today.getTime()
         let timeStamp = date + ' ' + time;
-
-        console.log(messageID);
 
         con.query(`SELECT * FROM crypto`, (err, rows) => {
             if (err) throw err;
